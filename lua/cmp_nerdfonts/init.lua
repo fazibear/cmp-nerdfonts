@@ -24,6 +24,7 @@ source.update = function()
 
   for name, glyph in pairs(json) do
     if glyph.char ~= nil then
+      name = 'nf-' .. name
       local line = ("{ word = '%s'; label = '%s'; insertText = '%s'; filterText = '%s' };\n"):format(
         name,
         glyph.char .. ' ' .. name .. '  (' .. glyph.code .. ')',
@@ -34,7 +35,7 @@ source.update = function()
     end
   end
 
-  local target = io.open('./glyphs.lua', 'w')
+  local target = io.open('./lua/cmp_nerdfonts/glyphs.lua', 'w')
   target:write(('return {\n%s}'):format(items))
   io.close(target)
 end
