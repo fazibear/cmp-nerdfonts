@@ -1,7 +1,8 @@
 # cmp-nerdfonts
 
-Don't need to go to https://www.nerdfonts.com/cheat-sheet! Add glyphs straight from nvim.
 nvim-cmp source for nerdfonts.
+
+Don't need to go to [www.nerdfonts.com](https://www.nerdfonts.com/cheat-sheet)! Add glyphs straight from nvim.
 
 # Setup
 
@@ -11,4 +12,10 @@ require'cmp'.setup {
     { name = 'nerdfonts' }
   }
 }
+```
+
+# Update glyphs
+
+```lua 
+require('cmp_nerdfonts').update()
 ```
