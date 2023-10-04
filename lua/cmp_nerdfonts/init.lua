@@ -16,8 +16,18 @@ source.get_trigger_characters = function()
   return { 'nf-' }
 end
 
+source.get_keyword_pattern = function()
+  return [[nf\-\S*]]
+end
+
 source.complete = function(self, params, callback)
-  callback(require('cmp_nerdfonts.glyphs'))
+  local match = vim.regex(self.get_keyword_pattern() .. '$'):match_str(params.context.cursor_before_line)
+
+  if match then
+    callback(require('cmp_nerdfonts.glyphs'))
+  else
+    return callback()
+  end
 end
 
 source.update = function()
